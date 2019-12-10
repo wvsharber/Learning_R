@@ -75,6 +75,11 @@ n_row <- cps_skools %>% nrow() # note: the console returned nothing.
 # to find out the number of rows it contains.
 cps_skools %>% nrow() # note: the console returned 661
 
+cps_skools %>% 
+  filter(Is_High_School == "Y") %>% 
+  select(School_ID, Is_High_School)
+
+
 #    While it is uncomfortable at first, the increase in readability
 #    is incredible when you start doing data science.
 
