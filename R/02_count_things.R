@@ -28,10 +28,10 @@ SourceGithub <- function(x) {
   #   * x: a url to the raw source of code on GitHub
   #
   # Output: runs/evaluates/compiles the source code in your Global Environment
-  require(RCurl) 
+  #require(RCurl) 
   
   # read script lines from x
-  script <- getURL(x, ssl.verifypeer = FALSE)
+  script <- RCurl::getURL(x, ssl.verifypeer = FALSE)
   
   # evaluate script in the Global Environment
   eval(parse(text = script), envir = .GlobalEnv)
@@ -94,7 +94,7 @@ df %>%
 # here, we see that every value of `ADA_Accessible`
 # contains at least one value in `Rating_Statement`
 df %>%
-  count(ADA_Accessible, Overall_Rating) 
+  count(ADA_Accessible, Overall_Rating) %>% 
   View("ADA Accessibility & Overall Rating, SY1617")
 
 # 4. But what if we were interested in doing group calculations?

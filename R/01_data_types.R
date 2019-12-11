@@ -103,7 +103,7 @@ objects() # [1] "cps_skools" "n_row"
 cps_schools <- cps_skools
 
 # 2) remove cps_skools from the global environment
-cps_skools %>% rm()
+rm(cps_skools)
 
 
 # 3) check your work
