@@ -14,7 +14,7 @@ library(tidyverse)
 
 # Connect to a specific postgres database
 con <- dbConnect(RPostgres::Postgres(),
-                 dbname = "chicago", 
+                 dbname = "opportunity_youth", 
                  host = "localhost", 
                  port = 5432) 
 
@@ -22,8 +22,8 @@ con <- dbConnect(RPostgres::Postgres(),
 dbListTables(con)
 
 # store one table as a tibble ----
-cps_dropout_rates_df = 
-  dbReadTable(con, "cps_dropout_rate_2011_2019") %>%
+pums_2017_df = 
+  dbReadTable(con, "pums_2017") %>%
   as_tibble()
 
 # store cps school, sy1617, info ----
@@ -39,4 +39,6 @@ cps_schools_sy1617_df =
 # create a scatter plot that visualizes the relationship between 
 # total student count per school and the dropout rate ----
 
+pums_2017_df %>% ggplot(aes(x = agep, y = wagp)) +
+  geom_point(alpha = 0.5)
 
